@@ -1,6 +1,6 @@
 #include "stdio.h"
 #include "stdlib.h"
-unsigned int B = 10;
+unsigned int B = 16;
 
 void fullAdder(int a, int b, int c, int* s, int* carry)
 { 
@@ -86,7 +86,7 @@ int checkForOne(int* a, int l)
 
 void carryAdder(int q,int rprev,int* d)
 {
-	*d=q+(rprev*5);
+	*d=q+(rprev*B/2);
 }
 
 void intDiv(int a, int b, int* q, int* carry)
@@ -125,18 +125,18 @@ void divideByTwo(int* a,int n,int* carry,int n0)
 	divideByTwo(a1,n-k,&carry1,n0);
 	divideByTwo(a0,k,&carry0,n0);
 	for (i = 0; i <k; i++) a[i] = a0[i];
-	a[k-1]+=carry1*5;
+	a[k-1]+=carry1*(B/2);
 	for (i = k; i < n; i++) a[i] = a1[i-k];
 	*carry=carry0;
 	return;
 }
 
-int lArray(int* a, int n)
+int lArray(int* a, long long int n,int B)
 {
 	int noOfDigits=1,i=0;
 	for(i=0;i<10;i++)
 	{	
-		a[i]=n%10; n=n/10;
+		a[i]=n%B; n=n/B;
 		if(n!=0) noOfDigits++;
 		else break;
 	}
@@ -149,8 +149,9 @@ int main(int argc, char** argv)
 	{
 		printf("give inputs i j\n"); return(0);
 	}
-	int value=0,carry=0,n0=4,i=atoi(argv[1]), j=atoi(argv[2]), max_cycle_length=0, count=1, max=0;
-	if(i<1 || j>1000000 || j<i) 
+	long long int value=0,i=atoi(argv[1]), j=atoi(argv[2]);
+	int carry=0,n0=4, max_cycle_length=0, count=1, max=0;
+	if(i<1 || j>100000000 || j<i) 
 	{
 		printf("inputs i or j are not proper or exceeding limits\n"); return(0);
 	}
@@ -161,7 +162,7 @@ int main(int argc, char** argv)
 		if(value!=1)		
 		{
 			int a[10];
-			l=lArray(a, value);
+			l=lArray(a, value, B);
 			while(flag!=1)
 			{
 				if(a[0]%2==0)
@@ -186,7 +187,7 @@ int main(int argc, char** argv)
 			max=value;
 		}
 	}
-	printf("%d %d %d\n",i,j,max_cycle_length);	
+	printf("%llu %llu %d\n",i,j,max_cycle_length);	
 }
 
 			
