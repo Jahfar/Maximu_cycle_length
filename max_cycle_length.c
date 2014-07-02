@@ -131,7 +131,7 @@ void divideByTwo(int* a,int n,int* carry,int n0)
 	return;
 }
 
-int lArray(int* a, long long int n,int B)
+int lArray(int* a,long int n,int B)
 {
 	int noOfDigits=1,i=0;
 	for(i=0;i<10;i++)
@@ -149,7 +149,7 @@ int main(int argc, char** argv)
 	{
 		printf("give inputs i j\n"); return(0);
 	}
-	long long int value=0,i=atoi(argv[1]), j=atoi(argv[2]);
+	long int value=0,i=atoi(argv[1]), j=atoi(argv[2]);
 	int carry=0,n0=6, max_cycle_length=0, count=1, max=0;
 	if(i<1 || j>100000000 || j<i) 
 	{
