@@ -187,7 +187,7 @@ int main(int argc, char** argv)
 			max=value;
 		}
 	}
-	printf("%llu %llu %d\n",i,j,max_cycle_length);	
+	printf("%lu %lu %d\n",i,j,max_cycle_length);	
 }
 
 			
