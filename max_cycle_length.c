@@ -1,6 +1,6 @@
 #include "stdio.h"
 #include "stdlib.h"
-unsigned int B = 16;
+unsigned int B = 10;
 
 void fullAdder(int a, int b, int c, int* s, int* carry)
 { 
@@ -150,7 +150,7 @@ int main(int argc, char** argv)
 		printf("give inputs i j\n"); return(0);
 	}
 	long long int value=0,i=atoi(argv[1]), j=atoi(argv[2]);
-	int carry=0,n0=4, max_cycle_length=0, count=1, max=0;
+	int carry=0,n0=6, max_cycle_length=0, count=1, max=0;
 	if(i<1 || j>100000000 || j<i) 
 	{
 		printf("inputs i or j are not proper or exceeding limits\n"); return(0);
